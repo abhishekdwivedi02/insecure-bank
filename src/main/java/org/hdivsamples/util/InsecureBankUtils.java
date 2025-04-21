@@ -28,4 +28,16 @@ public abstract class InsecureBankUtils {
 		int dotIndex = fileName.lastIndexOf('.');
 		return dotIndex == -1 ? fileName : fileName.substring(0, dotIndex);
 	}
+	public static int testcov(InputStream is) throws IOException
+    	{
+      		byte buffer[] = new byte[10];
+      		// Number of copied bytes is ignored
+      		if (is.read(buffer, 0 , 10) < 0) {
+        		return -1;
+      		}
+      		// 'buffer' may be accessed out of range.
+      		return buffer[9];
+    	}
+
+	
 }
