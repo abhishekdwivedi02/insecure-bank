@@ -5,6 +5,7 @@ import com.google.common.base.Preconditions;
 import java.io.File;
 
 public abstract class InsecureBankUtils {
+	private static int refCount = 0;
 
 	public static double round(double value, final int places) {
 		if (places < 0) {
@@ -28,16 +29,10 @@ public abstract class InsecureBankUtils {
 		int dotIndex = fileName.lastIndexOf('.');
 		return dotIndex == -1 ? fileName : fileName.substring(0, dotIndex);
 	}
-	public static int testcov(InputStream is) throws IOException
-    	{
-      		byte buffer[] = new byte[10];
-      		// Number of copied bytes is ignored
-      		if (is.read(buffer, 0 , 10) < 0) {
-        		return -1;
-      		}
-      		// 'buffer' may be accessed out of range.
-      		return buffer[9];
-    	}
+
+ public synchronized void doStuff() {
+        refCount++; //A NON_STATIC_GUARDING_STATIC defect here.
+    }
 
 	
 }
