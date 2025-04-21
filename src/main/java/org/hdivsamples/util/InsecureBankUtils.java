@@ -6,6 +6,7 @@ import java.io.File;
 
 public abstract class InsecureBankUtils {
 	private static int refCount = 0;
+	private static int refCount1 = 0;
 
 	public static double round(double value, final int places) {
 		if (places < 0) {
@@ -32,6 +33,9 @@ public abstract class InsecureBankUtils {
 
  public synchronized void doStuff() {
         refCount++; //A NON_STATIC_GUARDING_STATIC defect here.
+    }
+ public synchronized void doStuff1() {
+        refCount1++; //A NON_STATIC_GUARDING_STATIC defect here.
     }
 
 	
