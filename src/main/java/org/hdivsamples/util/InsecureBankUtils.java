@@ -35,7 +35,7 @@ public abstract class InsecureBankUtils {
         refCount++; //A NON_STATIC_GUARDING_STATIC defect here.
     }
  public synchronized void doStuff1() {
-        refCount1++; //A NON_STATIC_GUARDING_STATIC defect here.
+        refCount1++; //A NON_STATIC_GUARDING_STATIC defect here..
     }
 
 	
