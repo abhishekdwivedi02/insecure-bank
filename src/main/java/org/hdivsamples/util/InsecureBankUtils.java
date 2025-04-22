@@ -1,11 +1,14 @@
 package org.hdivsamples.util;
 
 import com.google.common.base.Preconditions;
+import java.io.IOException;
+import java.io.InputStream;
 
 import java.io.File;
 
 public abstract class InsecureBankUtils {
 	private static int refCount = 0;
+	private static int refCount3 = 0;
 	private int value;
 
 	public static double round(double value, final int places) {
@@ -54,6 +57,8 @@ public synchronized int get() { return value; }
       // 'buffer' may be accessed out of range.
       return buffer[9];
     }
-
+public synchronized void doStuff1() {
+refCount3++; //A NON_STATIC_GUARDING_STATIC defect here.
+    }
 	
 }
